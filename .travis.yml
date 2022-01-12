@@ -3,7 +3,8 @@ sudo: required
 
 arch: ppc64le
 
-dist: xenial
+# dist: xenial
+dist: bionic
 env:
   global:
     - CHANGE_MINIKUBE_NONE_USER=true
