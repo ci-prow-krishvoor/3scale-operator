@@ -3,6 +3,8 @@ sudo: required
 
 arch: ppc64le
 
+services: docker
+
 # dist: xenial
 dist: bionic
 env:
@@ -15,7 +17,7 @@ env:
     - KUBECONFIG=$HOME/.kube/config
     
 before_install:
-- sudo apt-get -qq -y install linux-image-$(uname -r) conntrack
+- sudo apt-get -qq -y install socat linux-image-$(uname -r) conntrack
 
 before_script:
 
