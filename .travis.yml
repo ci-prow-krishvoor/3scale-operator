@@ -15,7 +15,7 @@ env:
     - KUBECONFIG=$HOME/.kube/config
     
 before_install:
-- sudo apt-get -qq -y install conntrack
+- sudo apt-get -qq -y install linux-image-$(uname -r) conntrack
 
 before_script:
 
