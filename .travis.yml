@@ -2,6 +2,7 @@ sudo: required
 # We need the systemd for the kubeadm and it's default from 16.04+
 dist: focal
 arch: ppc64le
+group: linux-kernel
 env:
   global:
     - CHANGE_MINIKUBE_NONE_USER=true
