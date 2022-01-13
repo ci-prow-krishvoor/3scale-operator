@@ -13,7 +13,8 @@ env:
     - KUBECONFIG=$HOME/.kube/config
 
 before_install:
-- sudo apt-get -qq -y install conntrack linux-image-$(uname -r)
+- sudo apt-get -qq -y install conntrack socat
+- sudo docker run --privileged --rm -t -v /sys/kernel/debug:/sys/kernel/debug:rw
 
 before_script:
 # Download kubectl, which is a requirement for using minikube.
