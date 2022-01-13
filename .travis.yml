@@ -2,7 +2,6 @@ sudo: required
 # We need the systemd for the kubeadm and it's default from 16.04+
 dist: focal
 arch: ppc64le
-group: linux-kernel
 env:
   global:
     - CHANGE_MINIKUBE_NONE_USER=true
@@ -14,7 +13,6 @@ env:
 
 before_install:
 - sudo apt-get -qq -y install conntrack socat
-- sudo docker run --privileged --rm -t -v /sys/kernel/debug:/sys/kernel/debug:rw
 
 before_script:
 # Download kubectl, which is a requirement for using minikube.
@@ -23,7 +21,7 @@ before_script:
 - curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.16.0/minikube-linux-ppc64le && chmod +x minikube && sudo mv minikube /usr/local/bin/
 - mkdir -p $HOME/.kube $HOME/.minikube
 - touch $KUBECONFIG
-- sudo minikube start --profile=minikube --vm-driver=none --kubernetes-version=v1.20.1
+- sudo minikube start --profile=minikube --vm-driver=none --kubernetes-version=v1.20.1 --extra-config=kubelet.cgroup-driver=systemd
 - minikube update-context --profile=minikube
 - "sudo chown -R travis: /home/travis/.minikube/"
 - eval "$(minikube docker-env --profile=minikube)" && export DOCKER_CLI='docker'
