@@ -27,7 +27,7 @@ before_script:
 
 - minikube update-context --profile=minikube
 # Spin the registry
-- kubectl -f scripts/registry.yaml
+- kubectl apply -f scripts/registry.yaml
 - "sudo chown -R travis: /home/travis/.minikube/"
 
 script:
