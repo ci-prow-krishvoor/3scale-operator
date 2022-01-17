@@ -17,7 +17,7 @@ before_install:
 before_script:
 # Download kubectl, which is a requirement for using minikube.
 # Create a script and run the below
-# - sh scripts/before_script.sh
+- sh scripts/before_script.sh
 
 - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.20.1/bin/linux/ppc64le/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 # Download minikube.
